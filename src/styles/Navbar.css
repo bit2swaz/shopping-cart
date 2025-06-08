@@ -112,6 +112,20 @@
 @media (max-width: 768px) {
   .mobile-menu-icon {
     display: flex;
+    order: 1;
+  }
+
+  .navbar-container {
+    flex-wrap: wrap;
+  }
+  
+  .navbar-logo {
+    order: 2;
+    font-size: 1.3rem;
+  }
+  
+  .navbar-actions {
+    order: 3;
   }
 
   .navbar-menu {
@@ -128,6 +142,8 @@
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
+    order: 4;
+    z-index: 10;
   }
 
   .navbar-menu.active {
@@ -138,5 +154,26 @@
 
   .navbar-item {
     margin: 10px 0;
+  }
+  
+  .navbar-item:first-child {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 0;
+  }
+  
+  .theme-toggle {
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+  }
+  
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
   }
 } 

@@ -14,6 +14,7 @@
   --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
   --hover-bg: #f0f0f0;
+  --container-padding: 20px;
 }
 
 /* Dark Theme Variables */
@@ -60,7 +61,7 @@ a:hover {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--container-padding);
 }
 
 .btn {
@@ -152,6 +153,27 @@ a:hover {
   gap: 20px;
 }
 
+/* Page Transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
 /* Theme Toggle Button */
 .theme-toggle {
   width: 40px;
@@ -179,14 +201,34 @@ a:hover {
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  
+  :root {
+    --container-padding: 15px;
   }
 }
 
 @media (max-width: 480px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  :root {
+    --container-padding: 10px;
+  }
+  
+  .btn {
+    padding: 8px 12px;
+    font-size: 13px;
   }
 } 
