@@ -72,17 +72,54 @@ a:hover {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   font-size: 14px;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:hover {
   background-color: #2980b9;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn:active {
   transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.btn:focus:not(:active)::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
 }
 
 .btn-danger {
@@ -128,12 +165,19 @@ a:hover {
   justify-content: center;
   cursor: pointer;
   font-size: 16px;
-  transition: var(--transition);
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   color: var(--text-color);
+  position: relative;
+  overflow: hidden;
 }
 
 .quantity-btn:hover {
   background-color: var(--hover-bg);
+  transform: scale(1.05);
+}
+
+.quantity-btn:active {
+  transform: scale(0.95);
 }
 
 .quantity-input {
@@ -144,6 +188,13 @@ a:hover {
   margin: 0 5px;
   background-color: var(--bg-color);
   color: var(--text-color);
+  transition: border-color 0.3s ease;
+}
+
+.quantity-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 /* Grid Layout */
@@ -186,18 +237,30 @@ a:hover {
   justify-content: center;
   cursor: pointer;
   color: var(--text-color);
-  transition: var(--transition);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: var(--shadow);
   margin-left: 15px;
+  position: relative;
+  overflow: hidden;
 }
 
 .theme-toggle:hover {
   transform: rotate(30deg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:active {
+  transform: scale(0.9);
 }
 
 .theme-toggle svg {
   width: 20px;
   height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover svg {
+  transform: scale(1.1);
 }
 
 /* Responsive */
