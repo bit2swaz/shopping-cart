@@ -1,9 +1,9 @@
 .product-card {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: var(--transition);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,8 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: white;
+  background-color: var(--card-bg);
+  transition: background-color 0.3s ease;
 }
 
 .product-image {
@@ -46,6 +47,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   height: 48px;
+  transition: color 0.3s ease;
 }
 
 .product-price {
@@ -53,6 +55,7 @@
   font-weight: bold;
   color: var(--primary-color);
   margin-bottom: 15px;
+  transition: color 0.3s ease;
 }
 
 .add-to-cart-btn {

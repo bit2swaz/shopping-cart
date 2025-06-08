@@ -6,6 +6,7 @@
   margin-bottom: 30px;
   text-align: center;
   color: var(--primary-color);
+  transition: color 0.3s ease;
 }
 
 .products-grid {
@@ -28,6 +29,12 @@
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.loading p {
+  color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 @keyframes spin {
@@ -44,4 +51,5 @@
   color: var(--danger-color);
   margin-bottom: 20px;
   font-size: 18px;
+  transition: color 0.3s ease;
 } 
