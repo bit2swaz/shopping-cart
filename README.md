@@ -2,8 +2,6 @@
 
 A responsive and feature-rich e-commerce shopping cart application built with React. This project demonstrates advanced React patterns, context API usage, responsive design, and modern UI/UX practices.
 
-![ShopCart Screenshot](https://via.placeholder.com/800x400?text=ShopCart+Screenshot)
-
 ## Features
 
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
@@ -16,7 +14,7 @@ A responsive and feature-rich e-commerce shopping cart application built with Re
 
 ## Live Demo
 
-Visit the live application: [ShopCart Demo](https://shopcart-demo.netlify.app)
+Visit the live application: [ShopCart Demo](https://bit2-shopping.netlify.app/)
 
 ## Technologies Used
 
@@ -39,7 +37,7 @@ Visit the live application: [ShopCart Demo](https://shopcart-demo.netlify.app)
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/shopping-cart.git
+   git clone https://github.com/bit2swaz/shopping-cart.git
    cd shopping-cart
    ```
 
