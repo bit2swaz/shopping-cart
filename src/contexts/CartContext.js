@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 // Initial state for the cart
 const initialState = {
@@ -79,6 +80,14 @@ const cartReducer = (state, action) => {
       return state;
     }
     
+    case 'CLEAR_CART': {
+      return {
+        ...state,
+        items: [],
+        itemCount: 0
+      };
+    }
+    
     default:
       return state;
   }
@@ -107,20 +116,50 @@ export const CartProvider = ({ children }) => {
       type: 'ADD_ITEM',
       payload: { ...product, quantity }
     });
+    
+    // Show toast notification
+    toast.success(`${product.title} added to cart`);
   };
   
   const updateQuantity = (id, quantity) => {
+    const item = state.items.find(item => item.id === id);
+    
     dispatch({
       type: 'UPDATE_QUANTITY',
       payload: { id, quantity }
     });
+    
+    // Show toast notification
+    if (item) {
+      if (quantity <= 0) {
+        toast.info(`${item.title} removed from cart`);
+      } else {
+        toast.info('Cart updated');
+      }
+    }
   };
   
   const removeFromCart = (id) => {
+    const item = state.items.find(item => item.id === id);
+    
     dispatch({
       type: 'REMOVE_ITEM',
       payload: id
     });
+    
+    // Show toast notification
+    if (item) {
+      toast.info(`${item.title} removed from cart`);
+    }
+  };
+  
+  const clearCart = () => {
+    dispatch({
+      type: 'CLEAR_CART'
+    });
+    
+    // Show toast notification
+    toast.info('Cart cleared');
   };
   
   return (
@@ -130,7 +169,8 @@ export const CartProvider = ({ children }) => {
         itemCount: state.itemCount,
         addToCart,
         updateQuantity,
-        removeFromCart
+        removeFromCart,
+        clearCart
       }}
     >
       {children}

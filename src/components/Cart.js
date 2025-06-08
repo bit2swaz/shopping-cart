@@ -3,7 +3,7 @@ import { useCart } from '../contexts/CartContext';
 import '../styles/Cart.css';
 
 const Cart = () => {
-  const { cart, itemCount, updateQuantity, removeFromCart } = useCart();
+  const { cart, itemCount, updateQuantity, removeFromCart, clearCart } = useCart();
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
@@ -23,7 +23,12 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-      <h2>Your Cart ({itemCount} items)</h2>
+      <div className="cart-header">
+        <h2>Your Cart ({itemCount} items)</h2>
+        <button className="btn btn-outline clear-cart-btn" onClick={clearCart}>
+          Clear Cart
+        </button>
+      </div>
       
       <div className="cart-items">
         {cart.map((item) => (

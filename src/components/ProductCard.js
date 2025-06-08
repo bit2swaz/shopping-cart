@@ -5,6 +5,7 @@ import '../styles/ProductCard.css';
 const ProductCard = ({ product }) => {
   const { id, title, price, image, description } = product;
   const [quantity, setQuantity] = useState(1);
+  const [isAdding, setIsAdding] = useState(false);
   const { addToCart } = useCart();
 
   const handleIncrement = () => {
@@ -16,8 +17,14 @@ const ProductCard = ({ product }) => {
   };
 
   const handleAddToCart = () => {
+    setIsAdding(true);
     addToCart(product, quantity);
-    setQuantity(1); // Reset quantity after adding to cart
+    
+    // Reset quantity and animation state
+    setTimeout(() => {
+      setQuantity(1);
+      setIsAdding(false);
+    }, 300);
   };
 
   return (
@@ -39,8 +46,12 @@ const ProductCard = ({ product }) => {
           />
           <button className="quantity-btn" onClick={handleIncrement}>+</button>
         </div>
-        <button className="btn add-to-cart-btn" onClick={handleAddToCart}>
-          Add to Cart
+        <button 
+          className={`btn add-to-cart-btn ${isAdding ? 'adding' : ''}`} 
+          onClick={handleAddToCart}
+          disabled={isAdding}
+        >
+          {isAdding ? 'Adding...' : 'Add to Cart'}
         </button>
       </div>
     </div>
